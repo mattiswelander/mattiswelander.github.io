@@ -9,10 +9,12 @@ export function SiteHeader() {
   return (
     <header className="glass sticky top-0 z-50 border-b border-line">
       <div className="shell flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5">
-          <span className="border-b border-subtle/40 pb-1 font-display text-lg tracking-tight text-ink">
-            {studio.brand}
-          </span>
+        <Link to="/" className="group relative pb-1 font-display text-lg tracking-tight text-ink">
+          {studio.brand}
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 h-px w-full bg-subtle/40 transition-[width,opacity] duration-500 ease-in-out group-hover:w-0 group-hover:opacity-0 motion-reduce:transition-none"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -20,16 +22,18 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              className="relative text-[13px] font-medium text-subtle transition-colors hover:text-ink"
-              activeProps={{ className: "relative text-[13px] font-medium text-ink" }}
+              className="group relative pb-1 text-[13px] font-medium text-subtle transition-colors duration-300 hover:text-ink"
+              activeProps={{ className: "group relative pb-1 text-[13px] font-medium text-ink" }}
             >
               {({ isActive }) => (
                 <>
                   {item.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-brand transition-transform duration-300 ${
-                      isActive ? "scale-x-100" : "scale-x-0"
+                    className={`absolute bottom-0 left-0 h-px w-full origin-left transition-transform duration-300 ease-out motion-reduce:transition-none ${
+                      isActive
+                        ? "scale-x-100 bg-brand"
+                        : "scale-x-0 bg-subtle/40 group-hover:scale-x-100"
                     }`}
                   />
                 </>
