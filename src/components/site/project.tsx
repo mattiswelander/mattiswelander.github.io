@@ -2,7 +2,7 @@ import { project } from "@/lib/site";
 
 export function Project() {
   return (
-    <section id="portfolj" className="shell py-16 md:py-20">
+    <section className="shell py-16 md:py-20">
       <div className="mb-10 border-b border-line pb-5">
         <h2 className="font-display text-2xl tracking-tight text-ink">Portfölj</h2>
       </div>

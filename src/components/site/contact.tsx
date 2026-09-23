@@ -57,7 +57,7 @@ ${values.details}`;
   }
 
   return (
-    <section id="kontakt" className="border-t border-line">
+    <section>
       <div className="shell grid gap-10 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
           <h2 className="font-display text-2xl tracking-tight text-ink">Kontakt</h2>
