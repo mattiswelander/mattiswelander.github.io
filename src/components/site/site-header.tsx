@@ -25,29 +25,24 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <a href="#contact" className="btn-outline hidden sm:inline-flex">
-            Book a session
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="flex size-9 flex-col items-center justify-center gap-[5px] md:hidden"
-          >
-            <span
-              className={`h-px w-5 bg-ink transition-transform duration-300 ${
-                open ? "translate-y-[3px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-px w-5 bg-ink transition-transform duration-300 ${
-                open ? "-translate-y-[3px] -rotate-45" : ""
-              }`}
-            />
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="flex size-9 flex-col items-center justify-center gap-[5px] md:hidden"
+        >
+          <span
+            className={`h-px w-5 bg-ink transition-transform duration-300 ${
+              open ? "translate-y-[3px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`h-px w-5 bg-ink transition-transform duration-300 ${
+              open ? "-translate-y-[3px] -rotate-45" : ""
+            }`}
+          />
+        </button>
       </div>
 
       {open ? (
@@ -63,9 +58,6 @@ export function SiteHeader() {
                 {item.label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setOpen(false)} className="btn-solid my-3 sm:hidden">
-              Book a session
-            </a>
           </div>
         </nav>
       ) : null}

@@ -1,0 +1,46 @@
+import { project } from "@/lib/site";
+
+export function Project() {
+  return (
+    <section id="work" className="shell py-16 md:py-20">
+      <div className="mb-10 flex items-end justify-between border-b border-line pb-5">
+        <h2 className="font-serif text-2xl tracking-tight text-ink">Recent work</h2>
+        <span className="text-[11px] uppercase tracking-[0.18em] text-subtle">{project.year}</span>
+      </div>
+
+      <p className="mb-8 max-w-md text-[14px] leading-relaxed text-subtle">
+        One client so far. I&rsquo;d rather show that honestly than pad the page with things that
+        never happened.
+      </p>
+
+      <figure>
+        <img
+          src={project.image}
+          alt={project.alt}
+          loading="lazy"
+          width={1024}
+          height={1024}
+          className="aspect-[16/10] w-full rounded-lg object-cover outline-1 -outline-offset-1 outline-ink/10"
+        />
+        <figcaption className="mt-5 grid gap-4 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <h3 className="font-serif text-xl text-ink">{project.title}</h3>
+            <p className="mt-2 max-w-lg text-[14px] leading-relaxed text-subtle">
+              {project.summary}
+            </p>
+          </div>
+          <dl className="space-y-1 text-[13px] md:col-span-5 md:text-right">
+            <div className="flex gap-2 md:justify-end">
+              <dt className="text-subtle">Client</dt>
+              <dd className="text-ink">{project.client}</dd>
+            </div>
+            <div className="flex gap-2 md:justify-end">
+              <dt className="text-subtle">Type</dt>
+              <dd className="text-ink">{project.kind}</dd>
+            </div>
+          </dl>
+        </figcaption>
+      </figure>
+    </section>
+  );
+}
