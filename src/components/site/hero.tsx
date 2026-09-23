@@ -9,15 +9,10 @@ export function Hero() {
             Fotografi &middot; {studio.location}
           </p>
           <h1 className="font-display text-4xl leading-[1.06] tracking-tight text-ink md:text-5xl">
-            Bilder för evenemang,
-            <br className="hidden sm:block" /> personer och små verksamheter.
+            Bilder för företag,
+            <br className="hidden sm:block" /> föreningar och privatpersoner
+            <br className="hidden sm:block" /> &ndash; till hemsidor, sociala medier och mer.
           </h1>
-          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-subtle">
-            Jag heter {studio.name} och bor utanför {studio.location}. Jag går andra året på Fordon
-            och transport på Fyrvalla då jag har ett stort bilintresse. Sedan flera år tillbaka har
-            jag varit intresserad av foto, och i år har jag valt att satsa mer på fotohobbyn och
-            startat enskild firma.
-          </p>
           <div className="mt-8">
             <a href="#portfolj" className="btn-quiet">
               Se portföljen <span aria-hidden="true">&rarr;</span>
