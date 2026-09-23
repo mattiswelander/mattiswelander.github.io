@@ -13,7 +13,10 @@ export function Hero() {
           <h1 className="font-display text-4xl leading-[1.06] tracking-tight text-ink md:text-5xl">
             Bilder för företag,
             <br className="hidden sm:block" /> föreningar och privatpersoner
-            <br className="hidden sm:block" /> &ndash; till hemsidor, sociala medier och mer.
+            <br />
+            <span className="text-[0.62em] leading-[1.35] text-muted">
+              &ndash; till hemsidor, sociala medier och mer.
+            </span>
           </h1>
           <div className="mt-8">
             <Link to="/portfolj" className="btn-quiet">
