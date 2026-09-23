@@ -14,12 +14,10 @@ export function SiteHeader() {
           to="/"
           className="group relative pb-1 font-display text-lg tracking-tight text-ink"
         >
-          <span className={`${labelShift} group-hover:text-brand`}>
-            {studio.brand}
-          </span>
+          <span>{studio.brand}</span>
           <span
             aria-hidden="true"
-            className="absolute bottom-0 left-0 h-px w-full bg-subtle/40 transition-[width] duration-700 ease-out group-hover:w-0 motion-reduce:transition-none"
+            className="absolute bottom-0 left-0 h-px w-full bg-subtle/40"
           />
         </Link>
 
