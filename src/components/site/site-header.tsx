@@ -30,7 +30,7 @@ export function SiteHeader() {
                   {item.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute bottom-0 left-0 h-px transition-[width] duration-400 ease-out motion-reduce:transition-none ${
+                    className={`absolute bottom-0 left-0 h-px transition-[width] duration-[400ms] ease-out motion-reduce:transition-none ${
                       isActive
                         ? "w-full bg-brand"
                         : "w-0 bg-brand/70 group-hover:w-full"
