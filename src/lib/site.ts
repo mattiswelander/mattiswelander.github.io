@@ -3,6 +3,7 @@ import tablePhoto from "@/assets/finsittning-table.jpg.asset.json";
 
 export const studio = {
   name: "Mattis Welander",
+  brand: "Mattis Welander Foto",
   email: "mattis.welander@gmail.com",
   location: "Östersund",
 };
