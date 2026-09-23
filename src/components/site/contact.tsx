@@ -60,7 +60,7 @@ ${values.details}`;
     <section id="kontakt" className="border-t border-line">
       <div className="shell grid gap-10 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <h2 className="font-serif text-2xl tracking-tight text-ink">Kontakt</h2>
+          <h2 className="font-display text-2xl tracking-tight text-ink">Kontakt</h2>
           <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-subtle">
             Skriv några rader om vad du behöver och var det gäller, så hör jag av mig.
           </p>

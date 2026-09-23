@@ -23,6 +23,4 @@ export const project = {
   title: "Finsittning",
   image: hallPhoto.url,
   alt: "Folktät samling i en sal under en finsittning, med gula flaggor som löper över rummet.",
-  summary:
-    "Reportage från Studentkåren i Östersunds finsittning: långborden, kvällen och salen som fylldes.",
 };
