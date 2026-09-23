@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OmMigRouteImport } from './routes/om-mig'
 import { Route as PortfoljRouteImport } from './routes/portfolj'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmMigRoute = OmMigRouteImport.update({
+  id: '/om-mig',
+  path: '/om-mig',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfoljRoute = PortfoljRouteImport.update({
@@ -25,27 +31,31 @@ const PortfoljRoute = PortfoljRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/om-mig': typeof OmMigRoute
   '/portfolj': typeof PortfoljRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/om-mig': typeof OmMigRoute
   '/portfolj': typeof PortfoljRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/om-mig': typeof OmMigRoute
   '/portfolj': typeof PortfoljRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/portfolj'
+  fullPaths: '/' | '/om-mig' | '/portfolj'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/portfolj'
-  id: '__root__' | '/' | '/portfolj'
+  to: '/' | '/om-mig' | '/portfolj'
+  id: '__root__' | '/' | '/om-mig' | '/portfolj'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OmMigRoute: typeof OmMigRoute
   PortfoljRoute: typeof PortfoljRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-mig': {
+      id: '/om-mig'
+      path: '/om-mig'
+      fullPath: '/om-mig'
+      preLoaderRoute: typeof OmMigRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolj': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OmMigRoute: OmMigRoute,
   PortfoljRoute: PortfoljRoute,
 }
 export const routeTree = rootRouteImport
