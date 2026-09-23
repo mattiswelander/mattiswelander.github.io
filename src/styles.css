@@ -156,7 +156,7 @@
 
 /* Frosted surface used by the sticky menu bar and the booking panel */
 @utility glass {
-  background-color: color-mix(in oklab, var(--color-background) 72%, transparent);
+  background-color: color-mix(in oklab, var(--color-background) 88%, transparent);
   backdrop-filter: blur(14px) saturate(1.1);
   -webkit-backdrop-filter: blur(14px) saturate(1.1);
 }
