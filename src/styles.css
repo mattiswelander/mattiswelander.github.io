@@ -190,6 +190,10 @@
   gap: 0.5rem;
   border-radius: 9999px;
   background-color: var(--color-ink);
+  background-image: linear-gradient(var(--color-brand), var(--color-brand));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
   color: var(--color-background);
   padding: 0.8rem 1.35rem;
   font-size: 13px;
@@ -197,11 +201,16 @@
   line-height: 1;
   white-space: nowrap;
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
+    background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s ease,
+    transform 0.12s ease;
 
   &:hover {
-    background-color: var(--color-brand);
+    background-size: 100% 100%;
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
 
@@ -212,6 +221,10 @@
   gap: 0.5rem;
   border-radius: 9999px;
   border: 1px solid color-mix(in oklab, var(--color-ink) 18%, transparent);
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
   color: var(--color-ink);
   padding: 0.55rem 1rem;
   font-size: 13px;
@@ -219,14 +232,19 @@
   line-height: 1;
   white-space: nowrap;
   transition:
-    background-color 0.25s ease,
+    background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.25s ease,
-    color 0.25s ease;
+    color 0.25s ease,
+    transform 0.12s ease;
 
   &:hover {
-    background-color: var(--color-ink);
+    background-size: 100% 100%;
     border-color: var(--color-ink);
     color: var(--color-background);
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
 
@@ -243,6 +261,38 @@
 
   &:hover {
     color: var(--color-brand);
+  }
+}
+
+/* Motion: a hairline drawing itself in from the left */
+@keyframes rule-redraw {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+/* Motion: mobile menu items rising into focus */
+@keyframes menu-rise {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
+@utility menu-rise {
+  animation: menu-rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 }
 
