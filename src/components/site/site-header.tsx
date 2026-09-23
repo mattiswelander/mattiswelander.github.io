@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { navItems, studio } from "@/lib/site";
-import { labelShift, underlineSlide } from "@/lib/motion";
+import { labelShift } from "@/lib/motion";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
