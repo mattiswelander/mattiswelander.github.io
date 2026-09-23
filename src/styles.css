@@ -190,6 +190,10 @@
   gap: 0.5rem;
   border-radius: 9999px;
   background-color: var(--color-ink);
+  background-image: linear-gradient(var(--color-brand), var(--color-brand));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
   color: var(--color-background);
   padding: 0.8rem 1.35rem;
   font-size: 13px;
@@ -197,11 +201,16 @@
   line-height: 1;
   white-space: nowrap;
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
+    background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s ease,
+    transform 0.12s ease;
 
   &:hover {
-    background-color: var(--color-brand);
+    background-size: 100% 100%;
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
 
