@@ -2,14 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { navItems, studio } from "@/lib/site";
-
-/* Focus-pull: the label blurs and slides out while a duplicate comes into focus. */
-const pull =
-  "transition-[transform,filter,opacity] duration-[520ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:blur-[0px]";
-
-/* Hairline that draws itself in from the left on hover. */
-const redraw =
-  "group-hover:animate-[rule-redraw_560ms_cubic-bezier(0.16,1,0.3,1)_both] motion-reduce:group-hover:animate-none";
+import { focusPull as pull, ruleRedraw as redraw } from "@/lib/motion";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
