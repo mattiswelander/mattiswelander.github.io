@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as OmMigRouteImport } from './routes/om-mig'
 import { Route as PortfoljRouteImport } from './routes/portfolj'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OmMigRoute = OmMigRouteImport.update({
@@ -31,30 +37,34 @@ const PortfoljRoute = PortfoljRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
   '/om-mig': typeof OmMigRoute
   '/portfolj': typeof PortfoljRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
   '/om-mig': typeof OmMigRoute
   '/portfolj': typeof PortfoljRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
   '/om-mig': typeof OmMigRoute
   '/portfolj': typeof PortfoljRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/om-mig' | '/portfolj'
+  fullPaths: '/' | '/kontakt' | '/om-mig' | '/portfolj'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/om-mig' | '/portfolj'
-  id: '__root__' | '/' | '/om-mig' | '/portfolj'
+  to: '/' | '/kontakt' | '/om-mig' | '/portfolj'
+  id: '__root__' | '/' | '/kontakt' | '/om-mig' | '/portfolj'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KontaktRoute: typeof KontaktRoute
   OmMigRoute: typeof OmMigRoute
   PortfoljRoute: typeof PortfoljRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/om-mig': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KontaktRoute: KontaktRoute,
   OmMigRoute: OmMigRoute,
   PortfoljRoute: PortfoljRoute,
 }
