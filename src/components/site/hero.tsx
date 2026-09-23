@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import { heroImage, studio } from "@/lib/site";
-import { focusPull, ruleRedraw } from "@/lib/motion";
+import { underlineSlide } from "@/lib/motion";
 
 export function Hero() {
   return (
@@ -22,29 +22,17 @@ export function Hero() {
           <div className="mt-8">
             <Link to="/portfolj" className="group relative inline-block pb-1">
               <span className="btn-quiet">
-                <span className="relative block overflow-hidden leading-[1.5]">
-                  <span
-                    className={`block blur-[0px] group-hover:-translate-y-full group-hover:blur-[3px] ${focusPull}`}
-                  >
-                    Se portföljen
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className={`absolute inset-0 block translate-y-full opacity-0 blur-[3px] group-hover:translate-y-0 group-hover:opacity-100 group-hover:blur-[0px] ${focusPull}`}
-                  >
-                    Se portföljen
-                  </span>
-                </span>
+                <span>Se portföljen</span>
                 <span
                   aria-hidden="true"
-                  className="transition-[translate] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 motion-reduce:transition-none"
+                  className="transition-[translate] duration-300 ease-out group-hover:translate-x-1 motion-reduce:transition-none"
                 >
                   &rarr;
                 </span>
               </span>
               <span
                 aria-hidden="true"
-                className={`absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-brand/40 ${ruleRedraw}`}
+                className={`w-0 bg-brand/50 group-hover:w-full ${underlineSlide}`}
               />
             </Link>
           </div>

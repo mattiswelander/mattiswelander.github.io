@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { navItems, studio } from "@/lib/site";
-import { focusPull as pull, ruleRedraw as redraw } from "@/lib/motion";
+import { labelShift, underlineSlide } from "@/lib/motion";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -14,22 +14,12 @@ export function SiteHeader() {
           to="/"
           className="group relative pb-1 font-display text-lg tracking-tight text-ink"
         >
-          <span className="relative block overflow-hidden leading-[1.5]">
-            <span
-              className={`block blur-[0px] group-hover:-translate-y-full group-hover:blur-[4px] ${pull}`}
-            >
-              {studio.brand}
-            </span>
-            <span
-              aria-hidden="true"
-              className={`absolute inset-0 block translate-y-full opacity-0 blur-[4px] group-hover:translate-y-0 group-hover:opacity-100 group-hover:blur-[0px] ${pull}`}
-            >
-              {studio.brand}
-            </span>
+          <span className={`${labelShift} group-hover:text-brand`}>
+            {studio.brand}
           </span>
           <span
             aria-hidden="true"
-            className={`absolute bottom-0 left-0 h-px w-full origin-left bg-subtle/40 motion-reduce:transition-none ${redraw}`}
+            className={`w-full bg-subtle/40 group-hover:w-0 ${underlineSlide}`}
           />
         </Link>
 
@@ -38,33 +28,22 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              className="group relative pb-1 text-[13px] font-medium text-subtle transition-colors duration-300 hover:text-ink"
+              className="group relative pb-1 text-[13px] font-medium text-subtle transition-colors duration-200 hover:text-ink"
               activeProps={{
-                className: "group relative pb-1 text-[13px] font-medium text-ink",
+                className:
+                  "group relative pb-1 text-[13px] font-medium text-ink",
               }}
             >
               {({ isActive }) => (
                 <>
-                  <span className="relative block overflow-hidden leading-[1.5]">
-                    <span
-                      className={`block blur-[0px] group-hover:-translate-y-full group-hover:blur-[3px] ${pull}`}
-                    >
-                      {item.label}
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className={`absolute inset-0 block translate-y-full opacity-0 blur-[3px] group-hover:translate-y-0 group-hover:opacity-100 group-hover:blur-[0px] ${pull}`}
-                    >
-                      {item.label}
-                    </span>
-                  </span>
+                  <span className={labelShift}>{item.label}</span>
                   <span
                     aria-hidden="true"
-                    className={`absolute bottom-0 left-0 h-px w-full origin-left ${
+                    className={
                       isActive
-                        ? "bg-brand"
-                        : `scale-x-0 bg-subtle/40 motion-reduce:transition-none ${redraw}`
-                    }`}
+                        ? "absolute bottom-0 left-0 h-px w-full bg-brand"
+                        : `w-0 bg-subtle/60 group-hover:w-full ${underlineSlide}`
+                    }
                   />
                 </>
               )}
