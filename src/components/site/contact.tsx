@@ -13,8 +13,8 @@ export function Contact() {
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const message = `Name: ${values.name}
-Email: ${values.email}
+  const message = `Namn: ${values.name}
+E-post: ${values.email}
 
 ${values.details}`;
 
@@ -26,11 +26,11 @@ ${values.details}`;
 
   function validate(): boolean {
     const next: Errors = {};
-    if (!values.name.trim()) next.name = "Please add your name.";
+    if (!values.name.trim()) next.name = "Skriv ditt namn.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
-      next.email = "Please add a valid email address.";
+      next.email = "Ange en giltig e-postadress.";
     if (values.details.trim().length < 10)
-      next.details = "Tell me a little about the shoot.";
+      next.details = "Berätta lite om vad du behöver bilder till.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -39,7 +39,7 @@ ${values.details}`;
     event.preventDefault();
     if (!validate()) return;
 
-    const subject = `Enquiry — ${values.name.trim()}`;
+    const subject = `Förfrågan — ${values.name.trim()}`;
     window.location.href = `mailto:${studio.email}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(message)}`;
@@ -57,13 +57,12 @@ ${values.details}`;
   }
 
   return (
-    <section id="contact" className="border-t border-line">
+    <section id="kontakt" className="border-t border-line">
       <div className="shell grid gap-10 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <h2 className="font-serif text-2xl tracking-tight text-ink">Contact</h2>
+          <h2 className="font-serif text-2xl tracking-tight text-ink">Kontakt</h2>
           <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-subtle">
-            Send a few lines about what you need and where you are. You&rsquo;ll hear back with
-            availability and a price.
+            Skriv några rader om vad du behöver och var det gäller, så hör jag av mig.
           </p>
           <div className="mt-6 space-y-2 text-[14px] text-ink">
             <a href={`mailto:${studio.email}`} className="block hover:text-brand">
@@ -76,7 +75,7 @@ ${values.details}`;
         <form className="space-y-4 md:col-span-7" onSubmit={handleSubmit} noValidate>
           <div>
             <label htmlFor="name" className="mb-1.5 block text-[12px] font-medium text-subtle">
-              Name
+              Namn
             </label>
             <input
               id="name"
@@ -84,7 +83,7 @@ ${values.details}`;
               type="text"
               value={values.name}
               onChange={(event) => update("name", event.target.value)}
-              placeholder="Your name"
+              placeholder="Ditt namn"
               aria-invalid={Boolean(errors.name)}
               className="field"
             />
@@ -95,7 +94,7 @@ ${values.details}`;
 
           <div>
             <label htmlFor="email" className="mb-1.5 block text-[12px] font-medium text-subtle">
-              Email
+              E-post
             </label>
             <input
               id="email"
@@ -103,7 +102,7 @@ ${values.details}`;
               type="email"
               value={values.email}
               onChange={(event) => update("email", event.target.value)}
-              placeholder="you@email.com"
+              placeholder="du@epost.se"
               aria-invalid={Boolean(errors.email)}
               className="field"
             />
@@ -114,7 +113,7 @@ ${values.details}`;
 
           <div>
             <label htmlFor="details" className="mb-1.5 block text-[12px] font-medium text-subtle">
-              What you need
+              Vad det gäller
             </label>
             <textarea
               id="details"
@@ -122,7 +121,7 @@ ${values.details}`;
               rows={4}
               value={values.details}
               onChange={(event) => update("details", event.target.value)}
-              placeholder="A short description of the shoot…"
+              placeholder="Kort om bilden eller uppdraget du tänker dig…"
               aria-invalid={Boolean(errors.details)}
               className="field resize-none"
             />
@@ -132,20 +131,20 @@ ${values.details}`;
           </div>
 
           <button type="submit" className="btn-solid">
-            Send inquiry
+            Skicka förfrågan
           </button>
 
           {sent ? (
             <div className="rounded-lg border border-line bg-panel p-4 text-[13px] leading-relaxed text-subtle">
-              <p className="font-medium text-ink">Your email app should be opening.</p>
+              <p className="font-medium text-ink">Din e-postapp borde öppnas nu.</p>
               <p className="mt-1">
-                If nothing appeared, email{" "}
+                Om inget hände, mejla{" "}
                 <a href={`mailto:${studio.email}`} className="text-brand hover:underline">
                   {studio.email}
                 </a>{" "}
-                directly —{" "}
+                direkt —{" "}
                 <button type="button" onClick={copyMessage} className="text-brand hover:underline">
-                  {copied ? "Message copied" : "copy your message"}
+                  {copied ? "Meddelandet är kopierat" : "kopiera meddelandet"}
                 </button>
                 .
               </p>
