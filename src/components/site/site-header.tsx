@@ -80,12 +80,12 @@ export function SiteHeader() {
           className="flex size-9 flex-col items-center justify-center gap-[5px] md:hidden"
         >
           <span
-            className={`h-px w-5 bg-ink transition-transform duration-300 ${
+            className={`h-px w-5 bg-ink transition-[translate,rotate] duration-300 ${
               open ? "translate-y-[3px] rotate-45" : ""
             }`}
           />
           <span
-            className={`h-px w-5 bg-ink transition-transform duration-300 ${
+            className={`h-px w-5 bg-ink transition-[translate,rotate] duration-300 ${
               open ? "-translate-y-[3px] -rotate-45" : ""
             }`}
           />

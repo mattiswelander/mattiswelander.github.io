@@ -37,7 +37,7 @@ export function Hero() {
                 </span>
                 <span
                   aria-hidden="true"
-                  className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 motion-reduce:transition-none"
+                  className="transition-[translate] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 motion-reduce:transition-none"
                 >
                   &rarr;
                 </span>

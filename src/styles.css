@@ -267,10 +267,10 @@
 /* Motion: a hairline drawing itself in from the left */
 @keyframes rule-redraw {
   from {
-    transform: scaleX(0);
+    scale: 0 1;
   }
   to {
-    transform: scaleX(1);
+    scale: 1 1;
   }
 }
 
@@ -278,12 +278,12 @@
 @keyframes menu-rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    translate: 0 8px;
     filter: blur(3px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
     filter: blur(0);
   }
 }
