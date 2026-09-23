@@ -1,9 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { navItems, studio } from "@/lib/site";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.querySelector(item.href))
+      .filter((element): element is Element => element !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="glass sticky top-0 z-50 border-b border-line">
@@ -18,9 +38,18 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="text-[13px] font-medium text-subtle transition-colors hover:text-ink"
+              aria-current={active === item.href ? "true" : undefined}
+              className={`relative text-[13px] font-medium transition-colors hover:text-ink ${
+                active === item.href ? "text-ink" : "text-subtle"
+              }`}
             >
               {item.label}
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-brand transition-transform duration-300 ${
+                  active === item.href ? "scale-x-100" : "scale-x-0"
+                }`}
+              />
             </a>
           ))}
         </nav>
@@ -29,7 +58,7 @@ export function SiteHeader() {
           type="button"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? "Stäng menyn" : "Öppna menyn"}
           className="flex size-9 flex-col items-center justify-center gap-[5px] md:hidden"
         >
           <span
@@ -53,7 +82,9 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-line py-3 text-[13px] font-medium text-subtle transition-colors last:border-b-0 hover:text-ink"
+                className={`border-b border-line py-3 text-[13px] font-medium transition-colors last:border-b-0 hover:text-ink ${
+                  active === item.href ? "text-ink" : "text-subtle"
+                }`}
               >
                 {item.label}
               </a>

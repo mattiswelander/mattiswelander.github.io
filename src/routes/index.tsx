@@ -11,25 +11,25 @@ import { studio } from "@/lib/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${studio.name} — Photography in ${studio.location}` },
+      { title: `${studio.name} — Fotografi i ${studio.location}` },
       {
         name: "description",
         content:
-          "A one-person photography studio for portraits, small editorial jobs and product photos. Quiet, considered work — one client at a time.",
+          "Enskild firma i Östersund. Reportage från evenemang, porträtt och bilder åt små verksamheter. Ett uppdrag i taget.",
       },
-      { property: "og:title", content: `${studio.name} — Photography in ${studio.location}` },
+      { property: "og:title", content: `${studio.name} — Fotografi i ${studio.location}` },
       {
         property: "og:description",
         content:
-          "Portraits, small editorial jobs and product photos from a one-person studio. One client at a time.",
+          "Reportage, porträtt och bilder åt små verksamheter, tagna av en person som jobbar själv.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: studio.name },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: `${studio.name} — Photography in ${studio.location}` },
+      { name: "twitter:title", content: `${studio.name} — Fotografi i ${studio.location}` },
       {
         name: "twitter:description",
-        content: "Portraits, small editorial jobs and product photos. One client at a time.",
+        content: "Reportage, porträtt och bilder åt små verksamheter. Ett uppdrag i taget.",
       },
     ],
   }),

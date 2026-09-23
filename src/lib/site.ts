@@ -1,30 +1,28 @@
-import projectLinen from "@/assets/work-linen.jpg";
+import hallPhoto from "@/assets/finsittning-hall.jpg.asset.json";
+import tablePhoto from "@/assets/finsittning-table.jpg.asset.json";
 
 export const studio = {
-  name: "Halcyon Studio",
-  email: "studio@halcyon.studio",
-  location: "Copenhagen",
+  name: "Mattis Welander",
+  email: "mattis.welander@gmail.com",
+  location: "Östersund",
 };
 
 export const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Portfölj", href: "#portfolj" },
+  { label: "Om mig", href: "#om-mig" },
+  { label: "Kontakt", href: "#kontakt" },
 ];
 
-export const project = {
-  client: "Client name",
-  title: "Linen, Winter",
-  kind: "Editorial",
-  year: "2026",
-  image: projectLinen,
-  alt: "Model in loose natural linen lit by soft window light",
-  summary:
-    "A short studio shoot in soft window light, delivered as a small set of frames the client could use straight away.",
+export const heroImage = {
+  src: tablePhoto.url,
+  alt: "Studenter samlade runt ett vitt dukat långbord under en finsittning, med fönster och mjuk kvällsbelysning bakom.",
 };
 
-export const notes = [
-  "I work alone — you deal with the person holding the camera.",
-  "Each booking covers the shoot, the edit, and the final files.",
-  "Prices depend on the job; send a few lines and you'll get a quote.",
-];
+export const project = {
+  client: "Studentkåren i Östersund",
+  title: "Finsittning",
+  image: hallPhoto.url,
+  alt: "Folktät samling i en sal under en finsittning, med gula flaggor som löper över rummet.",
+  summary:
+    "Reportage från Studentkåren i Östersunds finsittning: långborden, kvällen och salen som fylldes.",
+};
