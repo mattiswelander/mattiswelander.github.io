@@ -8,14 +8,13 @@ export function Hero() {
           <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-brand">
             Fotografi &middot; {studio.location}
           </p>
-          <h1 className="font-serif text-4xl leading-[1.06] tracking-tight text-ink md:text-5xl">
+          <h1 className="font-display text-4xl leading-[1.06] tracking-tight text-ink md:text-5xl">
             Bilder för evenemang,
             <br className="hidden sm:block" /> personer och små verksamheter.
           </h1>
           <p className="mt-6 max-w-md text-[15px] leading-relaxed text-subtle">
-            Jag heter {studio.name} och jobbar på egen hand i min enskilda firma i{" "}
-            {studio.location}. Få uppdrag, tagna i lugn och ro, från första meddelandet till klara
-            bilder.
+            Jag heter {studio.name}, jag är 18 år och bor utanför {studio.location}. Till vardags
+            går jag Fordon och transport.
           </p>
           <div className="mt-8">
             <a href="#portfolj" className="btn-quiet">
