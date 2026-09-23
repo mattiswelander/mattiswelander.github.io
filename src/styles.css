@@ -8,14 +8,10 @@
  * Design system definition.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
+ * classes (e.g. --color-primary -> bg-primary, --color-ink -> text-ink).
  *
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
 @theme inline {
@@ -59,29 +55,49 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Studio palette */
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-panel: var(--panel);
+  --color-subtle: var(--subtle);
+  --color-brand: var(--brand);
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
 }
 
 :root {
   --radius: 0.625rem;
+
+  /* Studio palette — white paper, near-black ink, hairline rules */
+  --ink: oklch(0.218 0.002 265);
+  --line: oklch(0.925 0.002 265);
+  --panel: oklch(0.985 0.004 265);
+  --subtle: oklch(0.528 0.004 265);
+  --brand: oklch(0.539 0.204 264.7);
+
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.218 0.002 265);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.218 0.002 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
+  --popover-foreground: oklch(0.218 0.002 265);
+  --primary: oklch(0.218 0.002 265);
+  --primary-foreground: oklch(0.985 0.004 265);
+  --secondary: oklch(0.985 0.004 265);
+  --secondary-foreground: oklch(0.218 0.002 265);
+  --muted: oklch(0.985 0.004 265);
+  --muted-foreground: oklch(0.528 0.004 265);
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.925 0.002 265);
+  --input: oklch(0.925 0.002 265);
+  --ring: oklch(0.539 0.204 264.7);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -98,8 +114,14 @@
 }
 
 .dark {
+  --ink: oklch(0.95 0.002 265);
+  --line: oklch(0.3 0.004 265);
+  --panel: oklch(0.21 0.004 265);
+  --subtle: oklch(0.72 0.006 265);
+  --brand: oklch(0.66 0.19 262);
+
   --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
+  --foreground: oklch(0.95 0.002 265);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
@@ -132,13 +154,139 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* Frosted surface used by the sticky menu bar and the booking panel */
+@utility glass {
+  background-color: color-mix(in oklab, var(--color-background) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+
+/* Faint directional light behind the hero */
+@utility cool-light {
+  background-image:
+    radial-gradient(
+      120% 120% at 15% 0%,
+      color-mix(in oklab, var(--color-brand) 9%, transparent) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      120% 120% at 100% 100%,
+      color-mix(in oklab, var(--color-brand) 7%, transparent) 0%,
+      transparent 40%
+    );
+}
+
+/* Shared page container */
+@utility shell {
+  margin-inline: auto;
+  max-width: 72rem;
+  padding-inline: 1.5rem;
+}
+
+@utility btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--color-ink);
+  color: var(--color-background);
+  padding: 0.8rem 1.35rem;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background-color: var(--color-brand);
+  }
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--color-ink) 18%, transparent);
+  color: var(--color-ink);
+  padding: 0.55rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-background);
+  }
+}
+
+@utility btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: var(--color-brand);
+  }
+}
+
+/* Form fields — hairline borders, no fill */
+@utility field {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-line);
+  background-color: color-mix(in oklab, var(--color-background) 70%, transparent);
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  color: var(--color-ink);
+  transition: border-color 0.2s ease;
+
+  &::placeholder {
+    color: color-mix(in oklab, var(--color-subtle) 65%, transparent);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand);
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-brand) 18%, transparent);
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 }
