@@ -12,9 +12,11 @@ export function Hero() {
             Bilder för evenemang,
             <br className="hidden sm:block" /> personer och små verksamheter.
           </h1>
-          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-subtle">
-            Jag heter {studio.name}, jag är 18 år och bor utanför {studio.location}. Till vardags
-            går jag Fordon och transport.
+          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-subtle">
+            Jag heter {studio.name} och bor utanför {studio.location}. Jag går andra året på Fordon
+            och transport på Fyrvalla då jag har ett stort bilintresse. Sedan flera år tillbaka har
+            jag varit intresserad av foto, och i år har jag valt att satsa mer på fotohobbyn och
+            startat enskild firma.
           </p>
           <div className="mt-8">
             <a href="#portfolj" className="btn-quiet">
