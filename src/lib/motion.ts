@@ -3,7 +3,7 @@
  * labelShift: text color transitions smoothly on hover. */
 
 export const underlineSlide =
-  "absolute bottom-0 left-0 h-px transition-[width] duration-300 ease-out motion-reduce:transition-none";
+  "absolute bottom-0 left-0 h-px transition-[width] duration-500 ease-out motion-reduce:transition-none";
 
 export const labelShift =
-  "transition-colors duration-200 ease-out motion-reduce:transition-none";
+  "transition-colors duration-300 ease-out motion-reduce:transition-none";
