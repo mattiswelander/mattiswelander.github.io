@@ -11,7 +11,7 @@ export function SiteHeader() {
       <div className="shell flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">
           <span className="size-2.5 rounded-full bg-brand" aria-hidden="true" />
-          <span className="font-display text-lg tracking-tight text-ink">{studio.name}</span>
+          <span className="font-display text-lg tracking-tight text-ink">{studio.brand}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
