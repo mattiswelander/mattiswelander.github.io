@@ -14,7 +14,7 @@ export function Hero() {
             Bilder för företag,
             <br className="hidden sm:block" /> föreningar och privatpersoner
             <br />
-            <span className="text-[0.62em] leading-[1.35] text-muted">
+            <span className="text-[0.62em] leading-[1.35] text-subtle">
               &ndash; till hemsidor, sociala medier och mer.
             </span>
           </h1>
