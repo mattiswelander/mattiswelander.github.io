@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import { heroImage, studio } from "@/lib/site";
 
 export function Hero() {
@@ -14,9 +16,9 @@ export function Hero() {
             <br className="hidden sm:block" /> &ndash; till hemsidor, sociala medier och mer.
           </h1>
           <div className="mt-8">
-            <a href="#portfolj" className="btn-quiet">
+            <Link to="/portfolj" className="btn-quiet">
               Se portföljen <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="md:col-span-6">

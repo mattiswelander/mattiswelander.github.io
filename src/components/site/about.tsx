@@ -2,7 +2,7 @@ import { studio } from "@/lib/site";
 
 export function About() {
   return (
-    <section id="om-mig" className="border-t border-line">
+    <section>
       <div className="shell py-16 md:py-20">
         <h2 className="font-display text-2xl tracking-tight text-ink">Om mig</h2>
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-subtle">
