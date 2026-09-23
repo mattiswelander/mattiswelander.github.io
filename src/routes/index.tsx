@@ -3,8 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { About } from "@/components/site/about";
 import { Contact } from "@/components/site/contact";
 import { Hero } from "@/components/site/hero";
-import { SelectedWork } from "@/components/site/selected-work";
-import { Services } from "@/components/site/services";
+import { Project } from "@/components/site/project";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { studio } from "@/lib/site";
@@ -12,26 +11,25 @@ import { studio } from "@/lib/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${studio.name} — Portrait & Editorial Photography` },
+      { title: `${studio.name} — Photography in ${studio.location}` },
       {
         name: "description",
         content:
-          "Quiet, considered portraiture, editorial and still-life photography for brands, editors and individuals. Book a session with Halcyon Studio.",
+          "A one-person photography studio for portraits, small editorial jobs and product photos. Quiet, considered work — one client at a time.",
       },
-      { property: "og:title", content: `${studio.name} — Portrait & Editorial Photography` },
+      { property: "og:title", content: `${studio.name} — Photography in ${studio.location}` },
       {
         property: "og:description",
         content:
-          "A small photography practice built on patience and light. Portraiture, editorial and still life, delivered with intent.",
+          "Portraits, small editorial jobs and product photos from a one-person studio. One client at a time.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: studio.name },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: `${studio.name} — Portrait & Editorial Photography` },
+      { name: "twitter:title", content: `${studio.name} — Photography in ${studio.location}` },
       {
         name: "twitter:description",
-        content:
-          "Quiet, considered portraiture, editorial and still-life photography. Book a session.",
+        content: "Portraits, small editorial jobs and product photos. One client at a time.",
       },
     ],
   }),
@@ -44,8 +42,7 @@ function Index() {
       <SiteHeader />
       <main>
         <Hero />
-        <SelectedWork />
-        <Services />
+        <Project />
         <About />
         <Contact />
       </main>

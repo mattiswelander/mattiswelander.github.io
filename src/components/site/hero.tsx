@@ -4,25 +4,22 @@ import { studio } from "@/lib/site";
 export function Hero() {
   return (
     <section id="top" className="cool-light">
-      <div className="shell grid items-end gap-10 pb-16 pt-20 md:grid-cols-12 md:pb-24 md:pt-28">
+      <div className="shell grid items-end gap-10 pb-16 pt-20 md:grid-cols-12 md:pb-20 md:pt-24">
         <div className="md:col-span-7">
           <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-brand">
-            Portrait &amp; editorial photography
+            Photography &middot; {studio.location}
           </p>
-          <h1 className="font-serif text-5xl leading-[1.02] tracking-tight text-ink md:text-6xl">
-            Quiet, considered
-            <br className="hidden sm:block" /> portraiture &amp; editorial work.
+          <h1 className="font-serif text-4xl leading-[1.06] tracking-tight text-ink md:text-5xl">
+            Quiet pictures for
+            <br className="hidden sm:block" /> small brands and people.
           </h1>
           <p className="mt-6 max-w-md text-[15px] leading-relaxed text-subtle">
-            {studio.name} is a photography practice for brands, editors, and people who value
-            restraint. We work slowly, light carefully, and edit with intent.
+            {studio.name} is a one-person studio. Fewer jobs, taken slowly, from the first note to
+            the final files.
           </p>
-          <div className="mt-8 flex items-center gap-5">
-            <a href="#work" className="btn-solid">
-              View selected work
-            </a>
-            <a href="#services" className="btn-quiet">
-              Explore services <span aria-hidden="true">&rarr;</span>
+          <div className="mt-8">
+            <a href="#work" className="btn-quiet">
+              See the work <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
