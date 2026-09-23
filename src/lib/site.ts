@@ -8,10 +8,10 @@ export const studio = {
 };
 
 export const navItems = [
-  { label: "Portfölj", href: "#portfolj" },
-  { label: "Om mig", href: "#om-mig" },
-  { label: "Kontakt", href: "#kontakt" },
-];
+  { label: "Portfölj", to: "/portfolj" },
+  { label: "Om mig", to: "/om-mig" },
+  { label: "Kontakt", to: "/kontakt" },
+] as const;
 
 export const heroImage = {
   src: tablePhoto.url,
