@@ -19,7 +19,7 @@ export function SiteHeader() {
           </span>
           <span
             aria-hidden="true"
-            className={`w-full bg-subtle/40 group-hover:w-0 ${underlineSlide}`}
+            className="absolute bottom-0 left-0 h-px w-full bg-subtle/40 transition-[width] duration-700 ease-out group-hover:w-0 motion-reduce:transition-none"
           />
         </Link>
 
@@ -37,14 +37,12 @@ export function SiteHeader() {
               {({ isActive }) => (
                 <>
                   <span className={labelShift}>{item.label}</span>
-                  <span
-                    aria-hidden="true"
-                    className={
-                      isActive
-                        ? "absolute bottom-0 left-0 h-px w-full bg-brand"
-                        : `w-0 bg-subtle/60 group-hover:w-full ${underlineSlide}`
-                    }
-                  />
+                  {isActive ? (
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-0 left-0 h-px w-full bg-brand"
+                    />
+                  ) : null}
                 </>
               )}
             </Link>
