@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Project } from "@/components/site/project";
+import { Showreel } from "@/components/site/showreel";
 import { studio } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolj")({
@@ -24,5 +25,10 @@ export const Route = createFileRoute("/portfolj")({
 });
 
 function PortfoljPage() {
-  return <Project />;
+  return (
+    <>
+      <Project />
+      <Showreel />
+    </>
+  );
 }
