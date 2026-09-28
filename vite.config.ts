@@ -11,5 +11,8 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Save every page as finished HTML at build time (for static hosting like GitHub Pages).
+    pages: [{ path: "/" }, { path: "/portfolj" }, { path: "/om-mig" }, { path: "/kontakt" }],
+    prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },
 });
