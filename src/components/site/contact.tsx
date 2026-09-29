@@ -39,7 +39,9 @@ ${values.details}`;
     event.preventDefault();
     if (!validate()) return;
 
-    const subject = `Förfrågan — ${values.name.trim()}`;
+    // Ämnesraden hålls fri från å, ä och långa streck: vissa mejlprogram
+    // läser mailto-länkar med fel teckenstandard och visar dem då felaktiga.
+    const subject = `Kontakt - ${values.name.trim()}`;
     window.location.href = `mailto:${studio.email}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(message)}`;
