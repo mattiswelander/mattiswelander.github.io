@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Hero } from "@/components/site/hero";
-import { Showreel } from "@/components/site/showreel";
+import { CameraSequence } from "@/components/site/camera-sequence";
 import { studio } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -37,7 +37,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <Showreel />
+      <CameraSequence />
     </>
   );
 }
