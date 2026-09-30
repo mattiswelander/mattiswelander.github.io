@@ -22,7 +22,6 @@ export function CameraSequence() {
   const video = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     const update = () => {
       raf = 0;
@@ -31,7 +30,7 @@ export function CameraSequence() {
       const rect = el.getBoundingClientRect();
       const vw = window.innerWidth;
       const vh = window.innerHeight;
-      const p = reduce ? 1 : clamp(-rect.top / (rect.height - vh));
+      const p = clamp(-rect.top / (rect.height - vh));
 
       const w = cam.current.offsetWidth;
       const h = w * RATIO;
@@ -74,7 +73,7 @@ export function CameraSequence() {
   }, []);
 
   return (
-    <section ref={wrap} className="relative h-[600vh] border-t border-subtle/25 motion-reduce:h-screen">
+    <section ref={wrap} className="relative h-[600vh] border-t border-subtle/25">
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         <div ref={cam} className="w-[min(86vw,820px)] will-change-transform">
           <img
