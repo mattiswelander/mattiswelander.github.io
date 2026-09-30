@@ -12,7 +12,8 @@ const RATIO = 1264 / 1920;
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
 const seg = (p: number, a: number, b: number) => clamp((p - a) / (b - a));
 const ease = (t: number) => 1 - Math.pow(1 - t, 3);
-const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+// Extra-smooth easing for the zoom: no sudden start or stop.
+const smooth = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
 
 export function CameraSequence() {
   const wrap = useRef<HTMLDivElement>(null);
@@ -40,7 +41,7 @@ export function CameraSequence() {
       const cy = ((SCREEN.y0 + SCREEN.y1) / 2 - 0.5) * h;
 
       const rise = ease(seg(p, 0, 0.22));
-      const zoom = easeInOut(seg(p, 0.26, 0.5));
+      const zoom = smooth(seg(p, 0.24, 0.54));
       const target = Math.max(vw / sw, vh / sh) * 1.02;
       const s = 1 + (target - 1) * zoom;
       const y = (1 - rise) * (vh * 0.75);
@@ -54,8 +55,8 @@ export function CameraSequence() {
       const toWhite = seg(p, 0.86, 0.96);
       if (black.current) black.current.style.opacity = String(toBlack * (1 - toWhite));
       if (video.current) {
-        const slide = ease(seg(p, 0.64, 0.8));
-        video.current.style.transform = `translateX(${(1 - slide) * (vw * 0.6 + 200)}px)`;
+        const slide = smooth(seg(p, 0.66, 0.84));
+        video.current.style.transform = `translateY(${(1 - slide) * (vh * 0.5 + 200)}px)`;
         video.current.style.opacity = String(slide);
       }
     };
