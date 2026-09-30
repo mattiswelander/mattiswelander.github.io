@@ -48,7 +48,7 @@ export function CameraSequence() {
 
       cam.current.style.transformOrigin = `${50 + (cx / w) * 100}% ${50 + (cy / h) * 100}%`;
       cam.current.style.transform = `translate(${-cx * zoom}px, ${y - cy * zoom}px) scale(${s})`;
-      cam.current.style.opacity = String(0.2 + rise * 0.8);
+      cam.current.style.opacity = String((0.2 + rise * 0.8) * (1 - seg(p, 0.64, 0.66)));
 
       if (photo.current) photo.current.style.opacity = String(seg(p, 0.46, 0.52) * (1 - seg(p, 0.64, 0.66)));
       const toBlack = seg(p, 0.56, 0.64);
