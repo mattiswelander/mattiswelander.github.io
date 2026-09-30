@@ -50,7 +50,7 @@ export function CameraSequence() {
       cam.current.style.transform = `translate(${-cx * zoom}px, ${y - cy * zoom}px) scale(${s})`;
       cam.current.style.opacity = String(0.2 + rise * 0.8);
 
-      if (photo.current) photo.current.style.opacity = String(seg(p, 0.46, 0.52));
+      if (photo.current) photo.current.style.opacity = String(seg(p, 0.46, 0.52) * (1 - seg(p, 0.64, 0.66)));
       const toBlack = seg(p, 0.56, 0.64);
       const toWhite = seg(p, 0.86, 0.96);
       if (black.current) black.current.style.opacity = String(toBlack * (1 - toWhite));
