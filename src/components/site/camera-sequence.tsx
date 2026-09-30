@@ -50,7 +50,9 @@ export function CameraSequence() {
       cam.current.style.transform = `translate(${-cx * zoom}px, ${y - cy * zoom}px) scale(${s})`;
       cam.current.style.opacity = String((0.2 + rise * 0.8) * (1 - seg(p, 0.64, 0.66)));
 
-      if (photo.current) photo.current.style.opacity = String(seg(p, 0.46, 0.52) * (1 - seg(p, 0.64, 0.66)));
+      // Sharp photo sits exactly on the camera screen and zooms with it,
+      // fading in early so the swap is invisible and pixels never show.
+      if (photo.current) photo.current.style.opacity = String(smooth(seg(p, 0.14, 0.26)));
       const toBlack = seg(p, 0.56, 0.64);
       const toWhite = seg(p, 0.86, 0.96);
       if (black.current) black.current.style.opacity = String(toBlack * (1 - toWhite));
@@ -76,7 +78,7 @@ export function CameraSequence() {
   return (
     <section ref={wrap} className="relative h-[600vh] border-t border-subtle/25">
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
-        <div ref={cam} className="w-[min(86vw,820px)] will-change-transform">
+        <div ref={cam} className="relative w-[min(86vw,820px)]">
           <img
             src={camera.url}
             alt="Kamerans baksida med en bild från finsittningen på skärmen."
@@ -85,14 +87,20 @@ export function CameraSequence() {
             className="h-auto w-full select-none"
             draggable={false}
           />
+          <img
+            ref={photo}
+            src={project.image}
+            alt=""
+            aria-hidden="true"
+            className="absolute object-cover opacity-0"
+            style={{
+              left: `${SCREEN.x0 * 100}%`,
+              top: `${SCREEN.y0 * 100}%`,
+              width: `${(SCREEN.x1 - SCREEN.x0) * 100}%`,
+              height: `${(SCREEN.y1 - SCREEN.y0) * 100}%`,
+            }}
+          />
         </div>
-        <img
-          ref={photo}
-          src={project.image}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover opacity-0"
-        />
         <div ref={black} className="absolute inset-0 bg-ink opacity-0" />
         <div ref={video} className="absolute w-full max-w-[300px] px-6 opacity-0 md:max-w-[340px]">
           <video
